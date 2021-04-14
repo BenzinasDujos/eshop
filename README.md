@@ -4,3 +4,5 @@
 4) composer install
 5) php artisan migrate
 6) npm install && npm run dev
+7) php artisan key:generate
+8) php artisan serve
