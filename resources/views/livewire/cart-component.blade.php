@@ -13,13 +13,13 @@
 				<div class="wrap-iten-in-cart">
 					@if (Session::has('success_message'))
 						<div class="alert alert-success">
-							<strong>Success</strong> {{ Session::get('success_message') }}	
-						</div>	
+							<strong>Success</strong> {{ Session::get('success_message') }}
+						</div>
 					@endif
 					@if (Cart::count() > 0)
 					<h3 class="box-title">Products Name</h3>
 					<ul class="products-cart">
-						@foreach (Cart::content() as $item)				
+						@foreach (Cart::content() as $item)
 						<li class="pr-cart-item">
 							<div class="product-image">
 								<figure><img src="{{ ('assets/images/products') }}/{{ $item->model->image }}" alt="{{ $item->model->name }}"></figure>
@@ -30,7 +30,7 @@
 							<div class="price-field produtc-price"><p class="price">${{ $item->model->regular_price }}</p></div>
 							<div class="quantity">
 								<div class="quantity-input">
-									<input type="text" name="product-quatity" value="{{ $item->qty }}" data-max="120" pattern="[0-9]*" >									
+									<input type="text" name="product-quatity" value="{{ $item->qty }}" data-max="120" pattern="[0-9]*" >
 									<a class="btn btn-increase" href="#" wire:click.prevent="increaseQuantity('{{ $item->rowId }}')"></a>
 									<a class="btn btn-reduce" href="#" wire:click.prevent="decreaseQuantity('{{ $item->rowId }}')"></a>
 								</div>
@@ -43,7 +43,7 @@
 								</a>
 							</div>
 						</li>
-						@endforeach											
+						@endforeach
 					</ul>
 					@else
 						<p>No item in cart</p>
@@ -218,10 +218,10 @@
 								</div>
 							</div>
 						</div>
-					</div><!--End wrap-products-->
+					</div>
 				</div>
 
-			</div><!--end main content area-->
-		</div><!--end container-->
+			</div>
+		</div>
 
 	</main>

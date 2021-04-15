@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use Livewire\Component;
 use App\Models\Product;
 use Cart;
@@ -10,19 +12,32 @@ class DetailsComponent extends Component
 {
     public $slug;
 
-    public function mount($slug)
+    /**
+     * @param string $slug
+     * @return void
+     */
+    public function mount(string $slug): void
     {
         $this->slug = $slug;
     }
 
-    public function store($product_id, $product_name, $product_price)
+    /**
+     * @param int $product_id
+     * @param string $product_name
+     * @param float $product_price
+     * @return RedirectResponse
+     */
+    public function store(int $product_id, string $product_name, float $product_price): RedirectResponse
     {
         Cart::add($product_id, $product_name, 1, $product_price)->associate('App\Models\Product');
         session()->flash('success_message', 'Item added in cart');
         return redirect()->route('product.cart');
     }
 
-    public function render()
+    /**
+     * @return View
+     */
+    public function render(): View
     {
         $product = Product::where('slug', $this->slug)->first();
         $popular_products = Product::inRandomOrder()->limit(4)->get();

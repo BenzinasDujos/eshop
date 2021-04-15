@@ -89,7 +89,7 @@
 						<h4 class="title-box">Discount Codes</h4>
 						<p class="row-in-form">
 							<label for="coupon-code">Enter Your Coupon code:</label>
-							<input id="coupon-code" type="text" name="coupon-code" value="" placeholder="">	
+							<input id="coupon-code" type="text" name="coupon-code" value="" placeholder="">
 						</p>
 						<a href="#" class="btn btn-small">Apply</a>
 					</div>
@@ -242,10 +242,10 @@
 								</div>
 							</div>
 						</div>
-					</div><!--End wrap-products-->
+					</div>
 				</div>
 
-			</div><!--end main content area-->
-		</div><!--end container-->
+			</div>
+		</div>
 
 	</main>

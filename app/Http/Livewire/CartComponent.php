@@ -2,38 +2,57 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\View\View;
 use Livewire\Component;
 use Cart;
 
 class CartComponent extends Component
 {
-    public function increaseQuantity($rowId)
+    /**
+     * @param int $rowId
+     * @return void
+     */
+    public function increaseQuantity(int $rowId): void
     {
         $product = Cart::get($rowId);
         $qty = $product->qty + 1;
         Cart::update($rowId, $qty);
     }
 
-    public function decreaseQuantity($rowId)
+    /**
+     * @param int $rowId
+     * @return void
+     */
+    public function decreaseQuantity(int $rowId): void
     {
         $product = Cart::get($rowId);
         $qty = $product->qty - 1;
         Cart::update($rowId, $qty);
     }
 
-    public function destroy($rowId)
+    /**
+     * @param int $rowId
+     * @return void
+     */
+    public function destroy(int $rowId): void
     {
         Cart::remove($rowId);
         session()->flash('success_message', 'Item has been removed');
     }
 
-    public function destroyAll()
+    /**
+     * @return void
+     */
+    public function destroyAll(): void
     {
         Cart::destroy();
     }
 
-    public function render()
+    /**
+     * @return View
+     */
+    public function render(): View
     {
-        return view('livewire.cart-component')->layout("layouts.base");
+        return view('livewire.cart-component')->layout('layouts.base');
     }
 }

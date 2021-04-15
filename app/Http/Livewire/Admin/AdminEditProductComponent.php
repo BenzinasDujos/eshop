@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\View\View;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
@@ -27,7 +28,11 @@ class AdminEditProductComponent extends Component
     public $newImage;
     public $product_id;
 
-    public function mount($product_slug)
+    /**
+     * @param string $product_slug
+     * @return void
+     */
+    public function mount(string $product_slug): void
     {
         $product = Product::where('slug', $product_slug)->first();
         $this->name = $product->name;
@@ -45,12 +50,20 @@ class AdminEditProductComponent extends Component
         $this->product_id = $product->id;
     }
 
-    public function generateSlug()
+    /**
+     * @return void
+     */
+    public function generateSlug(): void
     {
         $this->slug = Str::slug($this->name, '-');
     }
 
-    public function updated($fields)
+    /**
+     * @param string $fields
+     * @return void
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function updated(string $fields): void
     {
         $this->validateOnly($fields, [
             'name' => 'required',
@@ -66,7 +79,10 @@ class AdminEditProductComponent extends Component
         ]);
     }
 
-    public function updateProduct()
+    /**
+     * @return void
+     */
+    public function updateProduct(): void
     {
         $this->validate([
             'name' => 'required',
@@ -102,7 +118,10 @@ class AdminEditProductComponent extends Component
         session()->flash('message', 'Product has been updated');
     }
 
-    public function render()
+    /**
+     * @return View
+     */
+    public function render(): View
     {
         $categories = Category::all();
         return view('livewire.admin.admin-edit-product-component', ['categories' => $categories])->layout('layouts.base');

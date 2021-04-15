@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Category;
+use Illuminate\View\View;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
@@ -13,7 +14,11 @@ class AdminEditCategoryComponent extends Component
     public $name;
     public $slug;
 
-    public function mount($category_slug)
+    /**
+     * @param string $category_slug
+     * @return void
+     */
+    public function mount(string $category_slug): void
     {
         $this->category_slug = $category_slug;
         $category = Category::where('slug', $category_slug)->first();
@@ -22,12 +27,20 @@ class AdminEditCategoryComponent extends Component
         $this->slug = $category->slug;
     }
 
-    public function generateSlug()
+    /**
+     * @return void
+     */
+    public function generateSlug(): void
     {
         $this->slug = Str::slug($this->name);
     }
 
-    public function updated($fields)
+    /**
+     * @param string $fields
+     * @return void
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function updated(string $fields): void
     {
         $this->validateOnly($fields, [
             'name' => 'required',
@@ -35,7 +48,10 @@ class AdminEditCategoryComponent extends Component
         ]);
     }
 
-    public function updateCategory()
+    /**
+     * @return void
+     */
+    public function updateCategory(): void
     {
         $this->validate([
             'name' => 'required',
@@ -48,7 +64,10 @@ class AdminEditCategoryComponent extends Component
         session()->flash('message', 'Category has been updated');
     }
 
-    public function render()
+    /**
+     * @return View
+     */
+    public function render(): View
     {
         return view('livewire.admin.admin-edit-category-component')->layout('layouts.base');
     }
