@@ -18,7 +18,7 @@ class AdminEditProductComponent extends Component
     public $description;
     public $regular_price;
     public $sale_price;
-    public $sku;
+    public $SKU;
     public $stock_status;
     public $featured;
     public $quantity;
@@ -36,7 +36,7 @@ class AdminEditProductComponent extends Component
         $this->description = $product->description;
         $this->regular_price = $product->regular_price;
         $this->sale_price = $product->sale_price;
-        $this->sku = $product->sku;
+        $this->SKU = $product->SKU;
         $this->stock_status = $product->stock_status;
         $this->featured = $product->featured;
         $this->quantity = $product->quantity;
@@ -54,15 +54,14 @@ class AdminEditProductComponent extends Component
     {
         $this->validateOnly($fields, [
             'name' => 'required',
-            'slug' => 'required|unique:products',
+            'slug' => 'required',
             'short_description' => 'required',
             'description' => 'required',
             'regular_price' => 'required|numeric',
             'sale_price' => 'numeric',
-            'sku' => 'required',
+            'SKU' => 'required',
             'stock_status' => 'required',
             'quantity' => 'required|numeric',
-            'newImage' => 'required|mimes:jpeg,png',
             'category_id' => 'required'
         ]);
     }
@@ -71,15 +70,14 @@ class AdminEditProductComponent extends Component
     {
         $this->validate([
             'name' => 'required',
-            'slug' => 'required|unique:products',
+            'slug' => 'required',
             'short_description' => 'required',
             'description' => 'required',
             'regular_price' => 'required|numeric',
             'sale_price' => 'numeric',
-            'sku' => 'required',
+            'SKU' => 'required',
             'stock_status' => 'required',
             'quantity' => 'required|numeric',
-            'newImage' => 'required|mimes:jpeg,png',
             'category_id' => 'required'
         ]);
 
@@ -90,7 +88,7 @@ class AdminEditProductComponent extends Component
         $product->description = $this->description;
         $product->regular_price = $this->regular_price;
         $product->sale_price = $this->sale_price;
-        $product->sku = $this->sku;
+        $product->SKU = $this->SKU;
         $product->stock_status = $this->stock_status;
         $product->featured = $this->featured;
         $product->quantity = $this->quantity;

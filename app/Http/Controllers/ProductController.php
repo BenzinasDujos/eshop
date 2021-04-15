@@ -15,6 +15,12 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-        return $product->toJson(JSON_PRETTY_PRINT);
+        if ($product === null) {
+            echo "<script>";
+            echo "alert('Product with this ID does not exist')";
+            echo "</script>";
+        } else {
+            return $product->toJson(JSON_PRETTY_PRINT);
+        }
     }
 }
