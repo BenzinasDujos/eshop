@@ -17,7 +17,7 @@ class AdminAddCategoryComponent extends Component
      */
     public function generateSlug(): void
     {
-        $this->slug = Str::slug($this->name);
+        $this->slug = Str::slug($this->name, '-');
     }
 
     /**

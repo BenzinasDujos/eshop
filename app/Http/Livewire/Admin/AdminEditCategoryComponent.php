@@ -32,7 +32,7 @@ class AdminEditCategoryComponent extends Component
      */
     public function generateSlug(): void
     {
-        $this->slug = Str::slug($this->name);
+        $this->slug = Str::slug($this->name, '-');
     }
 
     /**
@@ -44,7 +44,7 @@ class AdminEditCategoryComponent extends Component
     {
         $this->validateOnly($fields, [
             'name' => 'required',
-            'slug' => 'required|unique:categories'
+            'slug' => 'required'
         ]);
     }
 
@@ -55,7 +55,7 @@ class AdminEditCategoryComponent extends Component
     {
         $this->validate([
             'name' => 'required',
-            'slug' => 'required|unique:categories'
+            'slug' => 'required'
         ]);
         $category = Category::find($this->category_id);
         $category->name = $this->name;

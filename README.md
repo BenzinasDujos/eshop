@@ -6,3 +6,5 @@
 6) npm install && npm run dev
 7) php artisan key:generate
 8) php artisan serve
+
+Home Page is not fully interactive, it's there for a general view!

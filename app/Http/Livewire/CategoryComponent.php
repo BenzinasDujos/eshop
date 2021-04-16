@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\View\View;
 use Livewire\Component;
+use Livewire\Redirector;
 use Livewire\WithPagination;
 use Cart;
 use App\Models\Category;
@@ -35,7 +36,7 @@ class CategoryComponent extends Component
      * @param float $product_price
      * @return RedirectResponse
      */
-    public function store(int $product_id, string $product_name, float $product_price): RedirectResponse
+    public function store(int $product_id, string $product_name, float $product_price): Redirector
     {
         Cart::add($product_id, $product_name, 1, $product_price)->associate('App\Models\Product');
         session()->flash('success_message', 'Item added in cart');

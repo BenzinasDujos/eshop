@@ -71,8 +71,6 @@ class AdminEditProductComponent extends Component
             'short_description' => 'required',
             'description' => 'required',
             'regular_price' => 'required|numeric',
-            'sale_price' => 'numeric',
-            'SKU' => 'required',
             'stock_status' => 'required',
             'quantity' => 'required|numeric',
             'category_id' => 'required'
@@ -90,8 +88,6 @@ class AdminEditProductComponent extends Component
             'short_description' => 'required',
             'description' => 'required',
             'regular_price' => 'required|numeric',
-            'sale_price' => 'numeric',
-            'SKU' => 'required',
             'stock_status' => 'required',
             'quantity' => 'required|numeric',
             'category_id' => 'required'
