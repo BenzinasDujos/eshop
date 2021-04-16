@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Livewire\Component;
 use App\Models\Product;
@@ -26,7 +25,7 @@ class DetailsComponent extends Component
      * @param int $product_id
      * @param string $product_name
      * @param float $product_price
-     * @return RedirectResponse
+     * @return Redirector
      */
     public function store(int $product_id, string $product_name, float $product_price): Redirector
     {
